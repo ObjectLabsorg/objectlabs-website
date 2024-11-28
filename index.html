@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Labs - Engineering Education & Innovation</title>
+    <style>
+        :root {
+            --primary-color: #2B4B6F;
+            --secondary-color: #47A0FF;
+            --accent-gold: #FFD700;
+            --accent-coral: #FF6B6B;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --background-light: #F5F8FA;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        .logo svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--background-light);
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--background-light);
+            padding: 80px 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column a {
+            color: var(--white);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <svg viewBox="0 0 100 100">
+                    <path d="M50,10 L83.3,30 L83.3,70 L50,90 L16.7,70 L16.7,30 Z" 
+                          fill="#2B4B6F"/>
+                    <circle cx="50" cy="50" r="20" fill="#47A0FF" opacity="0.9"/>
+                    <circle cx="40" cy="45" r="8" fill="#FFD700" opacity="0.9"/>
+                    <circle cx="60" cy="55" r="6" fill="#FF6B6B" opacity="0.9"/>
+                </svg>
+                <span class="logo-text">Object Labs</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#academy">Academy</a></li>
+                    <li><a href="#studios">Studios</a></li>
+                    <li><a href="#consulting">Consulting</a></li>
+                    <li><a href="#store">Store</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Creating Tomorrow's Innovators</h1>
+            <p>Object Labs combines hands-on STEM education with innovative content creation to make engineering and technology accessible to everyone.</p>
+            <a href="#contact" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+            </div>
+            <div class="service-grid">
+                <div class="service-card" id="academy">
+                    <h3>Object Labs Academy</h3>
+                    <p>Hands-on STEM education programs for students ages 5-14. Our workshops and camps make learning engineering concepts fun and engaging.</p>
+                    <ul style="list-style: none; margin-top: 1rem;">
+                        <li>• Weekly Classes</li>
+                        <li>• STEM Camps</li>
+                        <li>• Special Workshops</li>
+                        <li>• Project-Based Learning</li>
+                    </ul>
+                </div>
+                <div class="service-card" id="studios">
+                    <h3>Object Labs Studios</h3>
+                    <p>Educational content creation focusing on engineering and technology. Making complex concepts accessible through engaging videos and tutorials.</p>
+                    <ul style="list-style: none; margin-top: 1rem;">
+                        <li>• YouTube Tutorials</li>
+                        <li>• Technical Content</li>
+                        <li>• Educational Series</li>
+                        <li>• Project Guides</li>
+                    </ul>
+                </div>
+                <div class="service-card" id="consulting">
+                    <h3>Consulting Services</h3>
+                    <p>Professional engineering consultation and technical advisory services. Leveraging 15 years of mechanical engineering experience.</p>
+                    <ul style="list-style: none; margin-top: 1rem;">
+                        <li>• Technical Review</li>
+                        <li>• Project Planning</li>
+                        <li>• Engineering Support</li>
+                        <li>• Educational Programs</li>
+                    </ul>
+                </div>
+                <div class="service-card" id="store">
+                    <h3>Object Labs Store</h3>
+                    <p>Educational materials and merchandise designed to support learning and showcase your passion for engineering.</p>
+                    <ul style="list-style: none; margin-top: 1rem;">
+                        <li>• STEM Kits</li>
+                        <li>• Project Materials</li>
+                        <li>• Educational Resources</li>
+                        <li>• Branded Merchandise</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div>
+                    <h2>About Object Labs</h2>
+                    <p style="margin-top: 1rem;">Founded by a mechanical engineer with 15 years of industry experience, Object Labs is committed to making STEM education accessible and engaging for the next generation of innovators.</p>
+                    <p style="margin-top: 1rem;">Our unique approach combines hands-on learning with modern content creation, allowing us to reach and inspire students both locally and globally.</p>
+                    <p style="margin-top: 1rem;">Based in Zionsville, Indiana, we offer in-person STEM programs while creating educational content that reaches audiences worldwide.</p>
+                </div>
+                <div style="text-align: center;">
+                    <svg viewBox="0 0 200 200" style="width: 200px;">
+                        <path d="M100,20 L166.7,60 L166.7,140 L100,180 L33.3,140 L33.3,60 Z" 
+                              fill="#2B4B6F"/>
+                        <circle cx="100" cy="100" r="40" fill="#47A0FF" opacity="0.9"/>
+                        <circle cx="80" cy="90" r="16" fill="#FFD700" opacity="0.9"/>
+                        <circle cx="120" cy="110" r="12" fill="#FF6B6B" opacity="0.9"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Ready to start your journey in STEM education?</p>
+            <div class="contact-info">
+                <div>
+                    <h3>Location</h3>
+                    <p>Zionsville, IN 46077</p>
+                </div>
+                <div>
+                    <h3>Email</h3>
+                    <p>hello@objectlabs.org</p>
+                </div>
+                <div>
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#">YouTube</a>
+                        <a href="#">TikTok</a>
+                        <a href="#">Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-column">
+                <h4>Academy</h4>
+                <ul>
+                    <li><a href="#">Programs</a></li>
+                    <li><a href="#">Workshops</a></li>
+                    <li><a href="#">Schedule</a></li>
+                    <li><a href="#">Registration</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Studios</h4>
+                <ul>
+                    <li><a href="#">Videos</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Consulting</a></li>
+                    <li><a href="#">Technical Review</a></li>
+                    <li><a href="#">Custom Programs</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="#">Social Media</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
