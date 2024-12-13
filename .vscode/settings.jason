@@ -1,7 +1,14 @@
-// Create .vscode/settings.json
 {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "files.autoSave": "onFocusChange",
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "editor.linkedEditing": true,
+    "editor.suggestSelection": "first",
+    "workbench.iconTheme": "material-icon-theme",
+    "terminal.integrated.defaultProfile.osx": "zsh",
     "liveServer.settings.donotShowInfoMsg": true,
-    "files.autoSave": "onFocusChange"
+    "prettier.semi": true,
+    "prettier.singleQuote": true
 }
