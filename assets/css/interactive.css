@@ -1,0 +1,33 @@
+.interactive-card {
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin: 20px 0;
+    transition: transform 0.3s ease;
+}
+
+.interactive-card:hover {
+    transform: translateY(-5px);
+}
+
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.filter-sidebar {
+    background: #F5F8FA;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #2B4B6F;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}

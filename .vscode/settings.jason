@@ -1,0 +1,7 @@
+// Create .vscode/settings.json
+{
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "files.autoSave": "onFocusChange"
+}
